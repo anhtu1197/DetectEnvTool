@@ -65,8 +65,20 @@ from convert_audio import convert_rate
 #     with open("foo.txt", "a") as f:
 #         f.write(filename +"\t" + label + "\n")
 
+#
+# from metadata_maker import make_meta
+#
+#
+# make_meta("/home/tupa4/Desktop/sample/sample3/output/", "music")
+import os
 
-from metadata_maker import make_meta
+from pytube import YouTube
+path = '/home/tupa4/Desktop/sample/tu'
+videourl = 'https://youtu.be/eSLe4HuKuK0'
+yt = YouTube(videourl)
+yt = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
+if not os.path.exists(path):
+    os.makedirs(path)
+    yt.download(path)
 
 
-make_meta("/home/tupa4/Desktop/sample/sample3/output/", "music")
