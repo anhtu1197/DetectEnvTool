@@ -1,8 +1,11 @@
 import sox
 import pydub
-
+import os
 
 def split_in_chunk(audio_filePath='', output_folder='', chunk= 10):
+    output_folder = output_folder+'/output/'
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
     audio = pydub.AudioSegment.from_wav(audio_filePath)
     lenInSec = ( len(audio)/(chunk*1000)).__round__() #split each path by chunk second
     print( str(lenInSec))

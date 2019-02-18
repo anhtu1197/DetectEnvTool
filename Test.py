@@ -15,12 +15,12 @@ from convert_audio import convert_rate
 #
 #
 # import sox
-import pydub
-sound1 = pydub.AudioSegment.from_mp3("/home/tupa4/Desktop/sample/sample3/hongkong.mp3")
-sound2 = pydub.AudioSegment.from_wav("/home/tupa4/Desktop/sample/sample3/hongkong.wav")#chia ra thanh nhieu doan 1s
-
-print(len(sound1))
-print(len(sound2))
+# import pydub
+# sound1 = pydub.AudioSegment.from_mp3("/home/tupa4/Desktop/sample/sample3/hongkong.mp3")
+# sound2 = pydub.AudioSegment.from_wav("/home/tupa4/Desktop/sample/sample3/hongkong.wav")#chia ra thanh nhieu doan 1s
+#
+# print(len(sound1))
+# print(len(sound2))
 #
 # s = 0
 #
@@ -45,6 +45,28 @@ print(len(sound2))
 # tmf.downsample(3)
 # tmf.build("/home/tupa4/Desktop/sample/sample1/hongkong.mp3", "/home/tupa4/Desktop/sample/test.wav")
 
-from split_audio import  split_in_chunk
+# from split_audio import  split_in_chunk
+#
+# split_in_chunk(audio_filePath="/home/tupa4/Desktop/sample/sample3/hongkong.wav", output_folder="/home/tupa4/Desktop/sample/sample3/")
+# import os
+# t = os.listdir("/home/tupa4/Desktop/DCASE/2017/datasets/TUT-acoustic-scenes-2017-evaluation/evaluation_setup")
+# print(t)
 
-split_in_chunk(audio_filePath="/home/tupa4/Desktop/sample/sample3/hongkong.wav", output_folder="/home/tupa4/Desktop/sample/sample3/output/")
+# with open("foo.txt", "a") as f:
+#     f.write("Haha\n")
+# import os
+#
+# filenames = os.listdir("/home/tupa4/Desktop/sample/sample3/output/")
+# # with open("foo.txt", "a") as f:
+# #     f.write("Haha\n")
+# label = 'music'
+# for filename in filenames:
+#     print(filename)
+#     with open("foo.txt", "a") as f:
+#         f.write(filename +"\t" + label + "\n")
+
+
+from metadata_maker import make_meta
+
+
+make_meta("/home/tupa4/Desktop/sample/sample3/output/", "music")
