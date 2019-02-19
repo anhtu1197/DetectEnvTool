@@ -30,7 +30,7 @@ def get_data(url, dst_folder, label):
     for filename in filenames:
         mp4_to_mp3(dst_folder + filename, dst_folder + filename.replace(" ", "") + ".mp3")
     #now convert to wav
-    convert_rate(dst_folder , dst_folder + 'wav/', RATE= "16000")
+    convert_rate(dst_folder , dst_folder + 'wav/', RATE= "44100")
     #split in to chunk with metadata
     for filename in (os.listdir(dst_folder + 'wav/')):
         if filename.endswith(".wav"):
@@ -44,5 +44,5 @@ def get_data(url, dst_folder, label):
 
 
 
-#get_data("https://youtu.be/eSLe4HuKuK0", "/home/tupa4/Desktop/sample/tu/", "phim")
+get_data("https://youtu.be/eSLe4HuKuK0", "/home/tupa4/Desktop/sample/tu/", "phim")
 #merge_data('/home/tupa4/Desktop/sample/tu/', '/home/tupa4/Desktop/sample/datatu/')
