@@ -71,14 +71,30 @@ from convert_audio import convert_rate
 #
 # make_meta("/home/tupa4/Desktop/sample/sample3/output/", "music")
 import os
+#
+# from pytube import YouTube
+# path = '/home/tupa4/Desktop/sample/tu'
+# videourl = 'https://youtu.be/eSLe4HuKuK0'
+# yt = YouTube(videourl)
+# yt = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
+# if not os.path.exists(path):
+#     os.makedirs(path)
+#     yt.download(path)
+#
+#
 
-from pytube import YouTube
-path = '/home/tupa4/Desktop/sample/tu'
-videourl = 'https://youtu.be/eSLe4HuKuK0'
-yt = YouTube(videourl)
-yt = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
-if not os.path.exists(path):
-    os.makedirs(path)
-    yt.download(path)
+import subprocess
+# filename = "/home/tupa4/Desktop/sample/tu/test.mp4"
+# import moviepy.editor as mp
+# clip = mp.VideoFileClip(filename)
+# clip.audio.write_audiofile("/home/tupa4/Desktop/sample/tu/theaudio.mp3")
 
 
+# path = 'tu/home/do/today'.split("/")[-1]
+# print(path)
+# to = []
+# for t in path.split("/"):
+#     print(t)
+
+name = "hu lu lu"
+print(name.replace(" ", ""))
