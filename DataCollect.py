@@ -44,5 +44,5 @@ def get_data(url, dst_folder, label):
 
 
 
-get_data("https://youtu.be/eSLe4HuKuK0", "/home/tupa4/Desktop/sample/tu/", "phim")
+#get_data("https://youtu.be/eSLe4HuKuK0", "/home/tupa4/Desktop/sample/tu/", "phim")
 #merge_data('/home/tupa4/Desktop/sample/tu/', '/home/tupa4/Desktop/sample/datatu/')

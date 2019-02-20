@@ -108,11 +108,15 @@ def predict(src, result_dst):
             print(filename)
             spec  = load_spec(src + filename)
             print(spec.shape)
-            spec = np.array([spec.reshape(1, 200, 500)])
-            predict =  model.predict(spec)
-            predict = np.argmax(predict, axis=1)
-            predict = int(predict)
-            predict = labels[predict]
+            try:
+                spec = np.array([spec.reshape(1, 200, 500)])
+                predict = model.predict(spec)
+                predict = np.argmax(predict, axis=1)
+                predict = int(predict)
+                predict = labels[predict]
+            except:
+                print("ERROR!")
+                predict = "ERROR!"
             files.append(filename)
             print("File name " + filename.split(".")[0])
             predictions.append(predict)
@@ -124,8 +128,9 @@ def predict(src, result_dst):
                            columns=['file', 'scene'])
     print(results)
 
-
-    results.to_csv(result_dst+ "huhu" +  '.txt', sep='\t', index=False, header=False)
+    if  (not os.path.exists(result_dst + "result")):
+        os.mkdir(result_dst + "result")
+    results.to_csv(result_dst+ "kqua" +  '.txt', sep='\t', index=False, header=False)
 
     #print("Hi")
     #using the

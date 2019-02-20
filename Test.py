@@ -115,12 +115,17 @@ import subprocess
 #
 # print(spec.shape)
 import numpy as np
-import pandas as pd
-file = ['Frozen2OfficialTeaserTrailer.wav10.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav3.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav2.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav7.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav5.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav9.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav8.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav4.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav6.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav0.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav1.wav.spec200.npy']
+# import pandas as pd
+# file = ['Frozen2OfficialTeaserTrailer.wav10.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav3.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav2.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav7.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav5.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav9.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav8.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav4.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav6.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav0.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav1.wav.spec200.npy']
+#
+# predict = ['park', 'car', 'park', 'park', 'park', 'park', 'residential_area', 'park', 'park', 'car', 'residential_area']
+#
+# results = pd.DataFrame({'file': file, 'scene': predict},
+#                        columns=['file', 'scene'])
+#
+# print(results)
 
-predict = ['park', 'car', 'park', 'park', 'park', 'park', 'residential_area', 'park', 'park', 'car', 'residential_area']
+file = "Cul-de-SacOfficialTrailer1(2016)-ShortFilm.wav8.wav.spec200.npy"
 
-results = pd.DataFrame({'file': file, 'scene': predict},
-                       columns=['file', 'scene'])
 
-print(results)
+
