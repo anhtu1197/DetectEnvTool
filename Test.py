@@ -95,6 +95,32 @@ import subprocess
 # to = []
 # for t in path.split("/"):
 #     print(t)
+#
+# name = "hu lu lu"
+# print(name.replace(" ", ""))
 
-name = "hu lu lu"
-print(name.replace(" ", ""))
+#
+# name = "Frozen2OfficialTeaserTrailer.wav5.wav.specstft.npy".split(".")[0]
+# print(name)
+# import pandas as pd
+#
+# df2 = pd.DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 9]], columns=['a', 'b', 'c'])
+#
+
+# print(df2)
+#
+# recording = "/home/tupa4/Desktop/sample/tu/output/Frozen2OfficialTeaserTrailer.wav0.wav.specstft.npy"
+#
+# spec  = np.load(recording).astype('float32')
+#
+# print(spec.shape)
+import numpy as np
+import pandas as pd
+file = ['Frozen2OfficialTeaserTrailer.wav10.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav3.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav2.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav7.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav5.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav9.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav8.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav4.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav6.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav0.wav.spec200.npy', 'Frozen2OfficialTeaserTrailer.wav1.wav.spec200.npy']
+
+predict = ['park', 'car', 'park', 'park', 'park', 'park', 'residential_area', 'park', 'park', 'car', 'residential_area']
+
+results = pd.DataFrame({'file': file, 'scene': predict},
+                       columns=['file', 'scene'])
+
+print(results)

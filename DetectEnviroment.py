@@ -2,7 +2,7 @@ import numpy as np
 import os
 import  librosa
 import  keras
-
+import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import librosa
@@ -42,8 +42,8 @@ def generate_spec(recording, bands ='stft'):
     np.save(spec_file, spec.astype('float16'), allow_pickle=False)
 
 
-def _load_spec(self, recording, bands = 'stft'):
-    return np.load(recording + '.spec' + str(bands) + '.npy').astype('float32')
+def load_spec(recording, bands = 'stft'):
+    return np.load(recording).astype('float32')
 
 
 
@@ -51,14 +51,14 @@ def _load_spec(self, recording, bands = 'stft'):
 def generate_all_spec(src):
     for filename in os.listdir(src):
         if filename.endswith(".wav"):
-             generate_spec(src + filename)
-path = "/home/tupa4/Desktop/sample/tu/output/"
+             generate_spec(src + filename, bands=200)
 
-generate_all_spec(path)
+
+
 
 
 def predict(src, result_dst):
-    BANDS = 200
+    BANDS = 200 #need to edit
     inputs = Input(shape=(1, BANDS, 500))
 
     x = Conv2D(100, kernel_size=(BANDS, 50), kernel_initializer='he_uniform')(inputs)
@@ -97,13 +97,44 @@ def predict(src, result_dst):
     labels = ['beach', 'bus', 'cafe/restaurant', 'car', 'city_center', 'forest_path',
               'grocery_store', 'home', 'library', 'metro_station', 'office', 'park',
               'residential_area', 'train', 'tram']
+    #Go and predict all the spec
+
+    files = []
+    predictions = []
+
+
     for filename in os.listdir(src):
         if filename.endswith(".npy"):
-             generate_spec(src + filename)
+            print(filename)
+            spec  = load_spec(src + filename)
+            print(spec.shape)
+            spec = np.array([spec.reshape(1, 200, 500)])
+            predict =  model.predict(spec)
+            predict = np.argmax(predict, axis=1)
+            predict = int(predict)
+            predict = labels[predict]
+            files.append(filename)
+            print("File name " + filename.split(".")[0])
+            predictions.append(predict)
+    print("Hello")
+    print(predictions)
+    print(files)
 
-    print("Result " + labels[predict])
+    results = pd.DataFrame({'file': files, 'scene': predictions},
+                           columns=['file', 'scene'])
+    print(results)
+
+
+    results.to_csv(result_dst+ "huhu" +  '.txt', sep='\t', index=False, header=False)
+
+    #print("Hi")
+    #using the
+    #print("Result " + labels[predict])
 
 
 
+#path = "/home/tupa4/Desktop/sample/tu/output/"
 
+#generate_all_spec(path)
 
+#predict("/home/tupa4/Desktop/sample/tu/output/", "/home/tupa4/Desktop/sample/tu/test/" )
