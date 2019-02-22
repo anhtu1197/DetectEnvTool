@@ -10,8 +10,25 @@ import  shutil
 
 def merge_data(src, dst_folder):
     #move audio
+    if (os.path.exists(dst_folder+ "/audio/" )):
+        for the_file in os.listdir(dst_folder+ "/audio/"):
+            file_path = os.path.join(dst_folder+ "/audio/", the_file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                # elif os.path.isdir(file_path): shutil.rmtree(file_path)
+            except Exception as e:
+                print(e)
+
+        shutil.rmtree(dst_folder+ "/audio/")
+        print("Deleted!")
+        os.mkdir(dst_folder+"/audio/")
+    else:
+        os.mkdir(dst_folder + "/audio/")
+
     for filename in (os.listdir(src + "/output")):
-        shutil.move(src + "/output/" + filename, dst_folder + 'audio/')
+        if (not os.path.exists(dst_folder + 'audio/' + filename)):
+            shutil.move(src + "/output/" + filename, dst_folder + 'audio/')
     #merge meta data
     with open(dst_folder + 'meta.txt', "a") as outfile:
         with open(src + 'outputmeta.txt') as infile:

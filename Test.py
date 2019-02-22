@@ -125,7 +125,24 @@ import numpy as np
 #
 # print(results)
 
-file = "Cul-de-SacOfficialTrailer1(2016)-ShortFilm.wav8.wav.spec200.npy"
+#file = "Cul-de-SacOfficialTrailer1(2016)-ShortFilm.wav8.wav.spec200.npy"
 
+#
+# path = "/home/tupa4/Desktop/sample/sample1/"
+# import shutil
+# shutil.rmtree(path)
 
+#
+# name = input("What is your name? ")
+# print(name)
 
+# import pandas as pd
+#
+# df = pd.read_csv("/home/tupa4/Desktop/sample/testcollect/home/result/" + "kqua.csv", parse_dates=True)
+#
+# print(df.head())
+
+dst = "/home/tupa4/Desktop/sample/testcollect/home/"
+if(os.path.exists(dst + "audio")):
+    print("exist")
+os.mkdir(dst + "/audio/")

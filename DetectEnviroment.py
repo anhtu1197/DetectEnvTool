@@ -57,7 +57,12 @@ def generate_all_spec(src):
 
 
 
-def predict(src, result_dst):
+def predict(src, result_dst, label):
+    labels = ['beach', 'bus', 'cafe/restaurant', 'car', 'city_center', 'forest_path',
+              'grocery_store', 'home', 'library', 'metro_station', 'office', 'park',
+              'residential_area', 'train', 'tram']
+
+
     BANDS = 200 #need to edit
     inputs = Input(shape=(1, BANDS, 500))
 
@@ -89,14 +94,12 @@ def predict(src, result_dst):
 
     # predict = model.predict(spec)
     # print(predict)
-    # predict = np.argmax(predict, axis=1)
+    # predict = np.argmax(predict, axi s=1)
     # predict = int(predict)
     # print(predict)
 
 
-    labels = ['beach', 'bus', 'cafe/restaurant', 'car', 'city_center', 'forest_path',
-              'grocery_store', 'home', 'library', 'metro_station', 'office', 'park',
-              'residential_area', 'train', 'tram']
+
     #Go and predict all the spec
 
     files = []
@@ -123,14 +126,25 @@ def predict(src, result_dst):
     print("Hello")
     print(predictions)
     print(files)
-
+    #correction
+    count = 0
+    for result in predictions:
+        if (result == label):
+            count += 1
     results = pd.DataFrame({'file': files, 'scene': predictions},
                            columns=['file', 'scene'])
     print(results)
 
+    print("Correction = " + str(count/len(predictions)))
+
+
+
+
+
+
     if  (not os.path.exists(result_dst + "result")):
         os.mkdir(result_dst + "result")
-    results.to_csv(result_dst+ "kqua" +  '.txt', sep='\t', index=False, header=False)
+    results.to_csv(result_dst+ "kqua" +  '.csv', sep='\t', index=False, header=True)
 
     #print("Hi")
     #using the
